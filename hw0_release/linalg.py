@@ -16,7 +16,7 @@ def dot_product(a, b):
     """
     out = None
     ### YOUR CODE HERE
-    pass
+    out = np.dot(a, b)
     ### END YOUR CODE
     return out
 
@@ -37,7 +37,7 @@ def complicated_matrix_function(M, a, b):
     """
     out = None
     ### YOUR CODE HERE
-    pass
+    out = np.dot(a.T, b) * np.dot(M, a)
     ### END YOUR CODE
 
     return out
@@ -61,7 +61,7 @@ def svd(M):
     s = None
     v = None
     ### YOUR CODE HERE
-    pass
+    u, s, v = np.linalg.svd(M)
     ### END YOUR CODE
 
     return u, s, v
@@ -82,7 +82,8 @@ def get_singular_values(M, k):
     """
     singular_values = None
     ### YOUR CODE HERE
-    pass
+    u, s, v = svd(M)
+    singular_values = s[:k]
     ### END YOUR CODE
     return singular_values
 
