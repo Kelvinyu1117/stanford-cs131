@@ -37,7 +37,7 @@ def complicated_matrix_function(M, a, b):
     """
     out = None
     ### YOUR CODE HERE
-    out = np.dot(a.T, b) * np.dot(M, a)
+    out = dot_product(a.T, b) * dot_product(M, a)
     ### END YOUR CODE
 
     return out
