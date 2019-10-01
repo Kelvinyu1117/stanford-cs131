@@ -59,10 +59,11 @@ def zero_pad(image, pad_height, pad_width):
     """
 
     H, W = image.shape
-    out = None
+    
+    out = np.zeros((H + 2 * pad_height, W + 2 * pad_width))
 
     ### YOUR CODE HERE
-    pass
+    out[pad_height:H + pad_height, pad_width:W + pad_width] = image
     ### END YOUR CODE
     return out
 
@@ -90,8 +91,13 @@ def conv_fast(image, kernel):
     Hk, Wk = kernel.shape
     out = np.zeros((Hi, Wi))
 
+    image = zero_pad(image, (Hk - 1)//2, (Wk - 1)//2)
+    kernel = np.flip(kernel, 0)
+    kernel = np.flip(kernel, 1)
     ### YOUR CODE HERE
-    pass
+    for m in range(Hi):
+        for n in range(Wi):
+           out[m, n] = np.sum(image[m: m + Hk, n: n + Wk] * kernel)
     ### END YOUR CODE
 
     return out
